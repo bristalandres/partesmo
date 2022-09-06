@@ -1,0 +1,73 @@
+@startuml
+Supervisor "*"--> "1" Operario
+Sector "1" <--"*" ParteMO
+Operario "1" <--"*" ParteMO
+Tarea "1" <.. "*" ParteMO
+ParteMO "*" --> "1" Estado
+ParteMO "*" --> "1" Proyecto
+Tarea "*" <-- "1" Proyecto
+Proyecto "*" --> "1" Estado
+Proyecto "*"--> "1" Empresa
+ParteMO "1" --> "*" LogValidacionParteMO
+Estado "1" <-- "*" LogValidacionParteMO
+ValidacionParteMO "1" <-- "*" LogValidacionParteMO
+ValidacionParteMO "*" --> "1" Tipo
+
+class Supervisor{
+  -Date fechaDesde
+  -Date fechaHasta
+}
+class Operario{
+  -int legajo
+  -String nombre
+  -String categoria
+}
+class Sector{
+  -String nombre
+  -String descripcion
+  -String observaciones
+}
+class Tarea{
+  -String nombre
+  -String descripcion
+  -String observaciones
+}
+class ParteMO{
+  -Date fecha
+  -Time horaDesde
+  -Time horaHasta
+  -Float horas
+}
+class Proyecto{
+  -String nombre
+  -String descripcion
+  -String observaciones
+}
+class Empresa{
+  -String nombre
+  -String descripcion
+  -String observaciones
+  -boolean activo
+  -boolean anulado
+}
+class Estado{
+  -String nombre
+  -String descripcion
+  -String observaciones
+}
+class LogValidacionParteMO{
+  -Date fecha
+}
+class ValidacionParteMO{
+  -String nombre
+  -String descripcion
+  -String observaciones
+  -String validador
+}
+class Tipo<<Enumeration>>{
+  -"Mensaje"
+  -"Advertencia"
+  -"Error"
+  -"Error Grave"
+}
+@enduml
