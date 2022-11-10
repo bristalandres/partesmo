@@ -45,10 +45,8 @@ class Proyecto{
 }
 class Empresa{
   -String nombre
-  -String descripcion
+  -String cuit
   -String observaciones
-  -boolean activo
-  -boolean anulado
 }
 class Estado{
   -String nombre
