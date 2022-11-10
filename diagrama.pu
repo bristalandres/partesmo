@@ -39,9 +39,8 @@ class ParteMO{
   -Float horas
 }
 class Proyecto{
-  -String nombre
+  -String codigo
   -String descripcion
-  -String observaciones
 }
 class Empresa{
   -String nombre
