@@ -25,12 +25,10 @@ class Operario{
 class Sector{
   -String nombre
   -String descripcion
-  -String observaciones
 }
 class Tarea{
-  -String nombre
+  -String codigo
   -String descripcion
-  -String observaciones
 }
 class ParteMO{
   -Date fecha
@@ -50,7 +48,6 @@ class Empresa{
 class Estado{
   -String nombre
   -String descripcion
-  -String observaciones
 }
 class LogValidacionParteMO{
   -Date fecha
