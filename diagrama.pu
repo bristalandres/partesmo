@@ -1,6 +1,4 @@
 @startuml
-Supervisor "*"--> "1" Operario
-Sector "1" <--"*" ParteMO
 Operario "1" <--"*" ParteMO
 Tarea "1" <.. "*" ParteMO
 ParteMO "*" --> "1" Estado
@@ -13,18 +11,10 @@ Estado "1" <-- "*" LogValidacionParteMO
 ValidacionParteMO "1" <-- "*" LogValidacionParteMO
 ValidacionParteMO "*" --> "1" Tipo
 
-class Supervisor{
-  -Date fechaDesde
-  -Date fechaHasta
-}
 class Operario{
   -int legajo
   -String nombre
   -String categoria
-}
-class Sector{
-  -String nombre
-  -String descripcion
 }
 class Tarea{
   -String codigo
