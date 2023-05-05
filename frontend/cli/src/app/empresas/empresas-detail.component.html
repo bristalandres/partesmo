@@ -1,0 +1,33 @@
+<div *ngIf="empresa">
+    <h2>{{ empresa.nombre | uppercase }}</h2>
+    <form #form="ngForm">
+        <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input [(ngModel)]="empresa.nombre" name="nombre" placeholder="Nombre" class="form-control" required
+                #name="ngModel" />
+
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+                <div *ngIf="name.errors?.['required']">
+                    El Nombre de la empresa es requerido.
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="name">Cuit:</label>
+            <input [(ngModel)]="empresa.cuit" name="cuit" placeholder="Cuit" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="name">Observaciones:</label>
+            <input [(ngModel)]="empresa.observaciones" name="observaciones" placeholder="Observaciones"
+                class="form-control" />
+        </div>
+        <br />
+        <button (click)="goBack()" class="btn
+    btn-danger">Atrás</button>
+        &nbsp;
+        <button (click)="save()" [disabled]="form.invalid" class="btn btn-success">
+            Guardar
+        </button>
+    </form>
+</div>
