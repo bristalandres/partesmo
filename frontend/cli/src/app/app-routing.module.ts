@@ -9,6 +9,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'empresas', component: EmpresasComponent },
   { path: 'empresas/:id', component: EmpresasDetailComponent },
+  // otherwise redirect to home
+  //{ path: 'empresas/delete/:id', component: EmpresasComponent.deleteEmpresa() }
 ];
 
 @NgModule({
@@ -16,8 +18,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes)
-    ],
-    exports: [ RouterModule ]
+  ],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
 

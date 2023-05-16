@@ -22,7 +22,7 @@ public class EmpresaService {
     }
 
     public Empresa findById(int id) {
-        return repository.findById(id).orElse(null);
+        return repository.findById(Integer.valueOf(id).longValue()).orElse(null);
     }
 
     public Empresa findByCuit(String cuit) {
@@ -32,6 +32,12 @@ public class EmpresaService {
     @Transactional
     public Empresa save(Empresa aEmpresa) {
         return repository.save(aEmpresa);
+    }
+
+
+    @Transactional
+    public void deleteById(int id) {
+        repository.deleteById(Integer.valueOf(id).longValue());
     }
 
 }

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, map, of, pipe } from 'rxjs';
+import { Observable, catchError, map, of, pipe } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { DataPackage } from '../data-package';
 
 import { Empresa } from './empresa';
-import { EMPRESAS } from './mock-empresas';
 import { NonNullAssert } from '@angular/compiler';
 
 @Injectable({
@@ -34,4 +33,15 @@ export class EmpresaService {
     save(empresa: Empresa): Observable<Empresa> {
         return this.http[empresa.id?"put":"post"]<DataPackage>(this.empresasUrl, empresa).pipe(map((response: DataPackage) => { return <Empresa>response.data;}));
     }
+
+    delete(id: number): Observable<Empresa> {
+        return this.http.delete(`${this.empresasUrl}/${id}/delete`).pipe(
+          map(() => {
+            return { id: id } as Empresa;
+          }),
+          catchError((error) => {
+            throw error.error;
+          })
+        );
+      }
 }
